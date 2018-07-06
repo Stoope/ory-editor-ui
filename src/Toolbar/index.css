@@ -20,6 +20,4 @@
  *
  */
 
-@import "./DisplayModeToggle/index.scss";
-@import "./Toolbar/index.scss";
-@import "./Trash/index.scss";
+@import "./Item/index.css";

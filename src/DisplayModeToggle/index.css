@@ -20,7 +20,7 @@
  *
  */
 
-@import "./Button/index.scss";
+@import "./Button/index.css";
 
 .ory-controls-mode-toggle-control-group {
   position: fixed;
