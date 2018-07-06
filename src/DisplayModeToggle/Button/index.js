@@ -33,6 +33,7 @@ const Button = ({ description, icon, onClick, active, disabled }) => (
         onClick={onClick}
         mini={device.mobile}
         disabled={disabled}
+        color={active ? "secondary" : ""}
       >
         {icon}
       </FloatingActionButton>
