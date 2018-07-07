@@ -25,6 +25,7 @@ import React from "react";
 
 import Provider from "../Provider";
 import ToggleEdit from "./ToggleEdit";
+import "./index.css";
 // import ToggleInsert from "./ToggleInsert";
 // import ToggleLayout from "./ToggleLayout";
 // import TogglePreview from "./TogglePreview";

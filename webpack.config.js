@@ -4,10 +4,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
-  entry: ["./src/index.js", "./src/index.css"],
+  entry: ["./src/index.js"],
   output: {
     path: path.resolve(__dirname, "lib"),
-    filename: "index.js"
+    filename: "index.js",
+    libraryTarget: "umd"
   },
   optimization: {
     minimizer: [
