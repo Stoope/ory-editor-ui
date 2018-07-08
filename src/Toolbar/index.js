@@ -1,35 +1,11 @@
-/*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * ORY Editor is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @license LGPL-3.0
- * @copyright 2016-2018 Aeneas Rekkas
- * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
- */
-
-// @flow
 import React, { Component } from "react";
-import Drawer from "material-ui/Drawer";
+import Drawer from "@material-ui/core/Drawer";
 import { connect } from "react-redux";
 import { isInsertMode } from "ory-editor-core/lib/selector/display";
 import { createStructuredSelector } from "reselect";
-import { Editor } from "ory-editor-core/lib";
-import List from "material-ui/List/List";
-import Subheader from "material-ui/Subheader";
-import TextField from "material-ui/TextField";
+import List from "@material-ui/core/List";
+import Subheader from "@material-ui/core/ListSubheader";
+import TextField from "@material-ui/core/TextField";
 import {
   LayoutPlugin,
   ContentPlugin
@@ -37,26 +13,16 @@ import {
 import Item from "./Item";
 import Provider from "../Provider";
 
-type Props = {
-  isInsertMode: boolean,
-  editor: Editor
-};
-
 class Raw extends Component {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
-      searchFilter: (a: any) => a,
+      searchFilter: a => a,
       isSearching: false
     };
 
     this.onSearch = this.onSearch.bind(this);
   }
-
-  state: {
-    searchFilter: Function,
-    isSearching: boolean
-  };
 
   componentDidUpdate() {
     const input = this.input;
@@ -70,17 +36,15 @@ class Raw extends Component {
     }
   }
 
-  input: Component<*, *, *>;
-
-  onRef = (component: Component<*, *, *>) => {
+  onRef = component => {
     this.input = component;
   };
 
-  onSearch = (e: Event) => {
+  onSearch = e => {
     const target = e.target;
     if (target instanceof HTMLInputElement) {
       this.setState({
-        searchFilter: ((v: any) => ({ text = "" }: Object) =>
+        searchFilter: (v => ({ text = "" }) =>
           text.toLowerCase().indexOf(v) > -1)(target.value.toLowerCase()),
         isSearching: target.value.length > 0
       });
@@ -95,20 +59,20 @@ class Raw extends Component {
     const { searchFilter } = this.state;
     const content = plugins.plugins.content.filter(searchFilter);
     const layout = plugins.plugins.layout.filter(searchFilter);
-
     return (
       <Drawer className="ory-toolbar-drawer" open={isInsertMode}>
-        <Subheader>Add plugin to content</Subheader>
+        <Subheader>Добавить плагин</Subheader>
         <div style={{ padding: "0 16px" }} ref={this.onRef}>
           <TextField
-            hintText="Search plugins"
+            placeholder="Поиск плагина"
             fullWidth
             onChange={this.onSearch}
           />
         </div>
-        <List>
-          {content.length ? <Subheader>Content plugins</Subheader> : null}
-          {content.map((plugin: ContentPlugin, k: Number) => {
+        <List
+          subheader={content.length ? <Subheader>Плагини</Subheader> : null}
+        >
+          {content.map((plugin, k) => {
             const initialState = plugin.createInitialState();
 
             return (
@@ -125,9 +89,8 @@ class Raw extends Component {
             );
           })}
         </List>
-        <List>
-          {layout.length ? <Subheader>Layout plugins</Subheader> : null}
-          {layout.map((plugin: LayoutPlugin, k: Number) => {
+        <List subheader={layout.length ? <Subheader>Секции</Subheader> : null}>
+          {layout.map((plugin, k) => {
             const initialState = plugin.createInitialState();
             const children = plugin.createInitialChildren();
 
@@ -155,7 +118,7 @@ const mapStateToProps = createStructuredSelector({ isInsertMode });
 
 const Decorated = connect(mapStateToProps)(Raw);
 
-const Toolbar = (props: any) => (
+const Toolbar = props => (
   <Provider {...props}>
     <Decorated {...props} />
   </Provider>
