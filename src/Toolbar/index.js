@@ -60,7 +60,7 @@ class Raw extends Component {
     const content = plugins.plugins.content.filter(searchFilter);
     const layout = plugins.plugins.layout.filter(searchFilter);
     return (
-      <Drawer className="ory-toolbar-drawer" open={isInsertMode}>
+      <Drawer variant='persistent' className="ory-toolbar-drawer" open={isInsertMode}>
         <Subheader>Добавить плагин</Subheader>
         <div style={{ padding: "0 16px" }} ref={this.onRef}>
           <TextField
