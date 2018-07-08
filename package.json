@@ -16,7 +16,7 @@
     "ory-editor-core": "0.2.27",
     "rc-tooltip": "3.7.2",
     "react": "16.4.1",
-    "react-dnd": "5.0.0",
+    "react-dnd": "^2.4.0",
     "react-dom": "16.4.1",
     "react-redux": "5.0.7",
     "reselect": "3.0.1"

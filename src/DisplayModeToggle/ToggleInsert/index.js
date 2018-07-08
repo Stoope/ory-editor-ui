@@ -21,32 +21,38 @@
  */
 
 // @flow
-import React from 'react'
-import ContentAdd from 'material-ui/svg-icons/content/add'
-import Button from '../Button'
+import React from "react";
+import Button from "../Button";
 
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
-import { insertMode } from 'ory-editor-core/lib/actions/display'
-import { isInsertMode } from 'ory-editor-core/lib/selector/display'
-import { createStructuredSelector } from 'reselect'
+import { insertMode } from "ory-editor-core/lib/actions/display";
+import { isInsertMode } from "ory-editor-core/lib/selector/display";
+import { createStructuredSelector } from "reselect";
 
-const Inner = ({
-  isInsertMode,
-  insertMode
-}: {
-  isInsertMode: boolean,
-  insertMode: Function
-}) => (
+const Inner = ({ isInsertMode, insertMode }) => (
   <Button
-    icon={<ContentAdd />}
-    description="Add things"
+    icon={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    }
+    description="Добавить"
     active={isInsertMode}
     onClick={insertMode}
   />
-)
+);
 
-const mapStateToProps = createStructuredSelector({ isInsertMode })
-const mapDispatchToProps = { insertMode }
+const mapStateToProps = createStructuredSelector({ isInsertMode });
+const mapDispatchToProps = { insertMode };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inner)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Inner);

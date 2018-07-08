@@ -1,51 +1,34 @@
-/*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * ORY Editor is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @license LGPL-3.0
- * @copyright 2016-2018 Aeneas Rekkas
- * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
- */
+import React from "react";
+import { connect } from "react-redux";
+import { resizeMode } from "ory-editor-core/lib/actions/display";
+import { isResizeMode } from "ory-editor-core/lib/selector/display";
+import { createStructuredSelector } from "reselect";
 
-// @flow
-import React from 'react'
-import Resize from 'material-ui/svg-icons/action/settings-overscan'
-import { connect } from 'react-redux'
-import { resizeMode } from 'ory-editor-core/lib/actions/display'
-import { isResizeMode } from 'ory-editor-core/lib/selector/display'
-import { createStructuredSelector } from 'reselect'
+import Button from "../Button";
 
-import Button from '../Button'
-
-const Inner = ({
-  isResizeMode,
-  resizeMode
-}: {
-  isResizeMode: boolean,
-  resizeMode: Function
-}) => (
+const Inner = ({ isResizeMode, resizeMode }) => (
   <Button
-    icon={<Resize />}
-    description="Resize things"
+    icon={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M12.01 5.5L10 8h4l-1.99-2.5zM18 10v4l2.5-1.99L18 10zM6 10l-2.5 2.01L6 14v-4zm8 6h-4l2.01 2.5L14 16zm7-13H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16.01H3V4.99h18v14.02z" />
+      </svg>
+    }
+    description="Изменить размер"
     active={isResizeMode}
     onClick={resizeMode}
   />
-)
+);
 
-const mapStateToProps = createStructuredSelector({ isResizeMode })
-const mapDispatchToProps = { resizeMode }
+const mapStateToProps = createStructuredSelector({ isResizeMode });
+const mapDispatchToProps = { resizeMode };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inner)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Inner);

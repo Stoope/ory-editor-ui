@@ -43,7 +43,7 @@ const Inner = ({ isEditMode, editMode }) => (
         <path d="M0 0h24v24H0z" fill="none" />
       </svg>
     }
-    description="Редактирование"
+    description="Редактировать"
     active={isEditMode}
     onClick={editMode}
   />

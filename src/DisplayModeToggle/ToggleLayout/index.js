@@ -21,32 +21,38 @@
  */
 
 // @flow
-import React from 'react'
-import ViewQuilt from 'material-ui/svg-icons/action/view-quilt'
-import Button from '../Button'
+import React from "react";
+import Button from "../Button";
 
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
-import { layoutMode } from 'ory-editor-core/lib/actions/display'
-import { isLayoutMode } from 'ory-editor-core/lib/selector/display'
-import { createStructuredSelector } from 'reselect'
+import { layoutMode } from "ory-editor-core/lib/actions/display";
+import { isLayoutMode } from "ory-editor-core/lib/selector/display";
+import { createStructuredSelector } from "reselect";
 
-const Inner = ({
-  isLayoutMode,
-  layoutMode
-}: {
-  isLayoutMode: boolean,
-  layoutMode: Function
-}) => (
+const Inner = ({ isLayoutMode, layoutMode }) => (
   <Button
-    icon={<ViewQuilt />}
-    description="Move things"
+    icon={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M10 18h5v-6h-5v6zm-6 0h5V5H4v13zm12 0h5v-6h-5v6zM10 5v6h11V5H10z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    }
+    description="Переместить"
     active={isLayoutMode}
     onClick={layoutMode}
   />
-)
+);
 
-const mapStateToProps = createStructuredSelector({ isLayoutMode })
-const mapDispatchToProps = { layoutMode }
+const mapStateToProps = createStructuredSelector({ isLayoutMode });
+const mapDispatchToProps = { layoutMode };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inner)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Inner);

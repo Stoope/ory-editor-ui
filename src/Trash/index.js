@@ -1,31 +1,6 @@
-/*
- * This file is part of ORY Editor.
- *
- * ORY Editor is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * ORY Editor is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- *
- * You should have received a copy of the GNU Lesser General Public License
- * along with ORY Editor.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @license LGPL-3.0
- * @copyright 2016-2018 Aeneas Rekkas
- * @author Aeneas Rekkas <aeneas+oss@aeneas.io>
- *
- */
-
-// @flow
 import React from "react";
 import { DropTarget as dropTarget } from "react-dnd";
-import Delete from "material-ui/svg-icons/action/delete";
-import FloatingActionButton from "material-ui/FloatingActionButton";
-import { Editor } from "ory-editor-core/lib";
+import FloatingActionButton from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import classNames from "classnames";
 import { removeCell } from "ory-editor-core/lib/actions/cell/core";
@@ -69,29 +44,35 @@ const connectMonitor = (connect, monitor) => ({
   isOverCurrent: monitor.isOver({ shallow: true })
 });
 
-const Raw = ({ isLayoutMode, connectDropTarget, isOverCurrent }) =>
-  connectDropTarget(
+const Raw = ({ isLayoutMode, connectDropTarget, isOverCurrent }) => {
+  return connectDropTarget(
     <div
       className={classNames("ory-controls-trash", {
         "ory-controls-trash-active": isLayoutMode
       })}
     >
       <FloatingActionButton
-        secondary
+        color="secondary"
         disabled={!isOverCurrent}
-        disabledColor="rgba(0,0,0,.87)"
+        variant="fab"
       >
-        <Delete
-          style={
-            !isOverCurrent && {
-              color: "rgba(255,255,255,.87)",
-              fill: "rgba(255,255,255,.87)"
-            }
-          }
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill={!isOverCurrent ? "rgba(255,255,255,.87)" : undefined}
+            color={!isOverCurrent ? "rgba(255,255,255,.87)" : undefined}
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
       </FloatingActionButton>
     </div>
   );
+};
 
 const types = ({ editor }) => {
   const plugins = [

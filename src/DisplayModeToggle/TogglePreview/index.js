@@ -21,31 +21,37 @@
  */
 
 // @flow
-import React from 'react'
-import Devices from 'material-ui/svg-icons/device/devices'
-import { connect } from 'react-redux'
-import { previewMode } from 'ory-editor-core/lib/actions/display'
-import { isPreviewMode } from 'ory-editor-core/lib/selector/display'
-import { createStructuredSelector } from 'reselect'
+import React from "react";
+import { connect } from "react-redux";
+import { previewMode } from "ory-editor-core/lib/actions/display";
+import { isPreviewMode } from "ory-editor-core/lib/selector/display";
+import { createStructuredSelector } from "reselect";
 
-import Button from '../Button'
+import Button from "../Button";
 
-const Inner = ({
-  isPreviewMode,
-  previewMode
-}: {
-  isPreviewMode: boolean,
-  previewMode: Function
-}) => (
+const Inner = ({ isPreviewMode, previewMode }) => (
   <Button
-    icon={<Devices />}
-    description="Preview result"
+    icon={
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4V6zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1zm-1 9h-4v-7h4v7z" />
+      </svg>
+    }
+    description="Предосмотр"
     active={isPreviewMode}
     onClick={previewMode}
   />
-)
+);
 
-const mapStateToProps = createStructuredSelector({ isPreviewMode })
-const mapDispatchToProps = { previewMode }
+const mapStateToProps = createStructuredSelector({ isPreviewMode });
+const mapDispatchToProps = { previewMode };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Inner)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Inner);
