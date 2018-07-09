@@ -70,7 +70,7 @@ class Raw extends Component {
           />
         </div>
         <List
-          subheader={content.length ? <Subheader>Плагини</Subheader> : null}
+          subheader={content.length ? <Subheader>Плагины</Subheader> : null}
         >
           {content.map((plugin, k) => {
             const initialState = plugin.createInitialState();
