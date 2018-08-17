@@ -17,12 +17,14 @@
   transition: all 200ms ease;
   white-space: nowrap;
   overflow: hidden;
+  padding: 0;
 }
 
 .ory-controls-mode-toggle-button:hover
   .ory-controls-mode-toggle-button-description {
   max-width: 999px;
-  background: var(--darkBlack);
-  color: var(--white);
-  border: 1px solid var(--faintBlack);
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding: 2px 8px;
 }

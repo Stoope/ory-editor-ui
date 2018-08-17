@@ -10,15 +10,17 @@
   },
   "dependencies": {
     "@material-ui/core": "^1.3.1",
+    "@material-ui/icons": "^2.0.2",
     "classnames": "^2.2.6",
     "device.js": "^2.3.0",
     "lodash": "^4.17.10",
     "ory-editor-core": "^0.3.1",
     "rc-tooltip": "^3.7.2",
     "react": "^16.4.1",
-    "react-dnd": "^2.4.0",
+    "react-dnd": "^3.0.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
     "reselect": "^3.0.1"
   },
   "devDependencies": {

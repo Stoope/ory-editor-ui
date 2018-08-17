@@ -25,7 +25,7 @@
 .ory-controls-mode-toggle-control-group {
   position: fixed;
   z-index: 100;
-  bottom: 0;
+  bottom: 50px;
   right: 0;
   padding: 16px;
   transition: all 200ms ease;
